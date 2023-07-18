@@ -4,7 +4,11 @@ services:
   kudelasz:
     build: .
     command: bash -c "
-        cd kudelasz && python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
+        pip install -r requirements.txt &&
+        cd kudelasz && 
+        python manage.py makemigrations && p
+        ython manage.py migrate && 
+        python manage.py runserver 0.0.0.0:8000
       "
     container_name: kudelasz
     volumes:
