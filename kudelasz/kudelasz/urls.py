@@ -16,10 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.http import JsonResponse
 
 from django.views.generic import TemplateView
 
+def properties(request):
+    return JsonResponse({'property': 'Big House'})
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'))
+    path('properties/', properties),
+    path('', TemplateView.as_view(template_name='index.html')),
 ]
