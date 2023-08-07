@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'rest_framework'
+    'properties'
 ]
 
 MIDDLEWARE = [
@@ -51,17 +53,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kudelasz.urls'
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'kudelasz',
-#         'USER': 'root',
-#         'PASSWORD': 'password',
-#         'HOST': 'mysql',
-#         'PORT': 3306
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -138,3 +129,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

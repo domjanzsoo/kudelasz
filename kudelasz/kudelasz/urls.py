@@ -20,8 +20,19 @@ from django.http import JsonResponse
 
 from django.views.generic import TemplateView
 
+
 def properties(request):
-    return JsonResponse({'property': 'Big House'})
+    data = [
+        {
+            'property': 'Big House'
+        },
+        {
+            'property': 'Small House'
+        }
+    ]
+
+    return JsonResponse({'data': data})
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

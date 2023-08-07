@@ -11,3 +11,5 @@ sqlparse==0.4.4
 termcolor==2.3.0
 tzdata==2023.3
 virtualenv==20.23.1
+djangorestframework==3.14.0
+djangorestframework-jsonapi-6.0.0

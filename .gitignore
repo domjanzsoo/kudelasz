@@ -3,3 +3,6 @@ frontend
 kudelasz/static
 venv
 kudelasz/kudelasz/__pycache__
+kudelasz/kudelasz/migrations/__pycache__
+kudelasz/properties/__pycache__
+kudelasz/properties/migrations/__pycache__
