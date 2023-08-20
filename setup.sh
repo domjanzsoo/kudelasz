@@ -39,6 +39,9 @@ pullFrontend():
   cd "frontend"
   git pull origin master
 
+setupBackend
+setupFrontEnd
+
 
 
 
