@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-setupBackend():
+setupBackend() {
   echo "--------------------------- Creating virtual environment ----------------------"
   pip install virtual env
   virtualenv venv
@@ -11,8 +11,9 @@ setupBackend():
 
   echo "----------------------- Running Django server -------------------------"
   python kudelasz/manage.py runserver
+}
 
-setupFrontEnd():
+setupFrontEnd() {
   touch frontend
   cd frontend
 
@@ -24,13 +25,15 @@ setupFrontEnd():
 
   echo "----------------- Building frontend -----------------------------"
   npm run build
+}
 
-pullBackend():
+pullBackend() {
   echo "---------- Pulling master branch ---------------------"
   cd kudelasz
   git pull origin master
+}
 
-pullFrontend():
+pullFrontend(){
   if [ ! -f "frontend" ]; then
     die "Frontend directory not found"
   fi
@@ -38,6 +41,7 @@ pullFrontend():
   echo "--------------- Pulling master branch ------------------------------"
   cd "frontend"
   git pull origin master
+}
 
 setupBackend
 setupFrontEnd
