@@ -4,7 +4,7 @@ setupBackend() {
   echo "--------------------------- Creating virtual environment ----------------------"
   pip install virtual env
   virtualenv venv
-  source venv/Script/active
+  source venv/Scripts/active
 
   echo "----------------------- Installing dependencies ------------------------------"
   pip install -r requirements.txt
