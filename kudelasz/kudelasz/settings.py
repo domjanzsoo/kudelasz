@@ -11,20 +11,28 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import pprint
+import os
 
+
+# Initialise environment variables
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Take environment variables from .env file
+environ.Env.read_env(env_file=str(BASE_DIR) + '/.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3)%3!8c2$rz7b0@l$-0s5&k$n6*lwbeu7x$j=9=#m1s7^-re5g'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -57,12 +65,12 @@ ROOT_URLCONF = 'kudelasz.urls'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kudelasz',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': 3306
+        'ENGINE': env('DEFAULT_DB_ENGINE'),
+        'NAME': env('DEFAULT_DB_NAME'),
+        'USER': env('DEFAULT_DB_USER'),
+        'PASSWORD': env('DEFAULT_DB_PASSWORD'),
+        'HOST': env('DEFAULT_DB_HOST'),
+        'PORT': env('DEFAULT_DB_PORT')
     }
 }
 

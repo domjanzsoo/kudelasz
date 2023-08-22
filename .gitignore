@@ -1,5 +1,7 @@
+kudelasz/.env
 mysql
 frontend
 kudelasz/static
+kudelasz/static/templates/base-vue.html
 venv
 __pycache__/

@@ -1,34 +1,37 @@
 #!/usr/bin/env bash
 
 setupBackend() {
-  echo "--------------------------- Creating virtual environment ----------------------"
-  pip install virtual env
+  echo "$(tput setaf 2)--------------------------- Creating virtual environment ----------------------$(tput sgr 0)"
+  pip install --upgrade pip
+  pip install virtualenv
   virtualenv venv
-  source venv/Scripts/active
+  source ./venv/Scripts/activate
 
-  echo "----------------------- Installing dependencies ------------------------------"
+  echo "$(tput setaf 2)----------------------- Installing dependencies ------------------------------$(tput sgr 0)"
   pip install -r requirements.txt
 
-  echo "----------------------- Running Django server -------------------------"
-  python kudelasz/manage.py runserver
+  echo "$(tput setaf 2)---------------------------Running migrations -----------------------------------$(tput sgr 0)"
+  python ./kudelasz/manage.py migrate
+
+  echo "$(tput setaf 2)----------------------- Running Django server -------------------------$(tput sgr 0)"
+  python ./kudelasz/manage.py runserver
 }
 
-setupFrontEnd() {
-  touch frontend
-  cd frontend
+setupFrontend() {
+  mkdir frontend
 
-  echo "------------- Pulling frontend repository ----------------------"
-  git clone git@github.com:domjanzsoo/kudelasz-client.git .
+  echo "$(tput setaf 2)------------- Pulling frontend repository ----------------------$(tput sgr 0)"
+  cd frontend && git clone git@github.com:domjanzsoo/kudelasz-client.git .
 
-  echo "---------------- Installing dependencies ------------------------"
+  echo "$(tput setaf 2)---------------- Installing dependencies ------------------------$(tput sgr 0)"
   npm install
 
-  echo "----------------- Building frontend -----------------------------"
+  echo "$(tput setaf 2)----------------- Building frontend -----------------------------$(tput sgr 0)"
   npm run build
 }
 
 pullBackend() {
-  echo "---------- Pulling master branch ---------------------"
+  echo "$(tput setaf 2)---------- Pulling master branch ---------------------$(tput sgr 0)"
   cd kudelasz
   git pull origin master
 }
@@ -38,13 +41,12 @@ pullFrontend(){
     die "Frontend directory not found"
   fi
 
-  echo "--------------- Pulling master branch ------------------------------"
+  echo "--------------- Pulling master branch ------------------------------$(tput sgr 0)"
   cd "frontend"
   git pull origin master
 }
 
 setupBackend
-setupFrontEnd
 
 
 
