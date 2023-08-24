@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
 setupBackend() {
+  environment=dev
+
+  if [ ! -z "$1" ]; then
+    environment=$1
+  fi
+
+  echo "$(tput setaf 2)--------------------------- Copying $(environment) environment file ----------------------$(tput sgr 0)"
+  cp ./kudelasz/.env-${environment} ./kudelasz/.env
+
   echo "$(tput setaf 2)--------------------------- Creating virtual environment ----------------------$(tput sgr 0)"
   pip install --upgrade pip
   pip install virtualenv
@@ -33,6 +42,7 @@ setupFrontend() {
 pullBackend() {
   echo "$(tput setaf 2)---------- Pulling master branch ---------------------$(tput sgr 0)"
   cd kudelasz
+  git checkout master
   git pull origin master
 }
 
@@ -46,9 +56,9 @@ pullFrontend(){
   git pull origin master
 }
 
+
 setupBackend
-
-
+setupFrontend
 
 
 
