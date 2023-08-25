@@ -52,6 +52,8 @@ setupFrontend() {
   echo "$(tput setaf 2)----------------- Building frontend -----------------------------$(tput sgr 0)"
   npm run build
   echo "$(tput setaf 2)--------------------------- Done ----------------------$(tput sgr 0)"
+
+  cd ../
 }
 
 pullBackend() {
