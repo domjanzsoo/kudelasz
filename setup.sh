@@ -31,7 +31,7 @@ setupBackend() {
   python ./kudelasz/manage.py migrate
   echo "$(tput setaf 2)--------------------------- Done ----------------------$(tput sgr 0)"
 
-  if [[$serve == "true" ]]; then
+  if [[ $serve == "true" ]]; then
     echo "$(tput setaf 2)----------------------- Running Django server -------------------------$(tput sgr 0)"
     python ./kudelasz/manage.py runserver
     echo "$(tput setaf 2)--------------------------- Done ----------------------$(tput sgr 0)"
