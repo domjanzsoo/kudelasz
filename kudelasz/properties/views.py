@@ -9,7 +9,7 @@ from collections import OrderedDict
 
 class PropertyViews(APIView, PageNumberPagination):
     def get(self, request, id=None):
-        self.page_size = 1
+        self.page_size = 10
 
         if id:
             item = Property.objects.get(id=id)
@@ -18,7 +18,6 @@ class PropertyViews(APIView, PageNumberPagination):
             return Response({'status': 'success', 'data': serializer.data}, status=status.HTTP_200_OK)
 
         items = Property.objects.all()
-
         results = self.paginate_queryset(items, request, view=self)
         serializer = PropertySerializer(results, many=True, context={'request': request})
 
